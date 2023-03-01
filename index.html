@@ -211,7 +211,9 @@ function loadRankArrays(){
 }
 function testFirstAccess(){
 	    var rankTest= localStorage.getItem("Easypointrank");
-		if (rankTest==null){
+		alert("test running" + rankTest);
+		if (rankTest == null){
+			alert("rankTestnull");
 		saveRankArrays()
 		}
 	    }
