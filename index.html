@@ -128,11 +128,10 @@ var numbers = [];
 var guesses = [];
 var score = 0;
 var dif = 10;
-var rankPoE = [];
-var rankPlE = [];
-var rankPoH = [];
-var rankPlH = [];
-
+var rankPoE = [0,0,0,0,0];
+var rankPlE = ["--",--",--",--",--"];
+var rankPoH = [0,0,0,0,0];
+var rankPlH = ["--",--",--",--",--"];
 
 function cellInsert(cellid,data){
 var cell = document.getElementById(cellid);
@@ -210,7 +209,13 @@ function loadRankArrays(){
 	rankPoH= localStorage.getItem("Hardpointsrank").split(",");
 
 }
-
+function testFirstAccess(){
+	    var rankTest= localStorage.getItem("Easypointrank");
+		if (rankTest==null){
+		saveRankArrays()
+		}
+	    }
+	    
 function saveRankToArrays(){
 var temp=0;
 if (dif==10){
@@ -314,8 +319,9 @@ function doorman()
 	alert ("Hello " + ask + "!");
 	return game();
 }
-loadRankArrays();
-tableRankArrays();
+	    testFirstAccess();
+	    loadRankArrays();
+	    tableRankArrays();
 
 
 </script>
