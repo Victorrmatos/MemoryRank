@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<style>
+main {
+display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+#start {
+padding:20px;
+font-size:25px;
+justify-content:center;
+}
+table, tr, td{
+border: 1px solid;
+border-collapse: collapse;
+text-align: center;
+
+}
+table{
+margin:10px;
+}
+td{
+padding:5px;
+}
+#tables{
+display:flex;
+flex-direction: row;
+}
+</style>
+    <title> Memory Game </title>
+
+
+  </head>
+  <body style='background-color:lightblue;'>
+    <main>
+      <h1><br>S i m o n ` s . M e m o r y</h1>
+<br>
+<h3><b>A new number is given every round, then you are asked to input the whole sequence.</b></h3>
+<br>
+<button type="button" id="start" onclick="doorman()"> <b>-   Start Game   -</b> </button>
+<br>
+<br>
+<h4>Change difficulty: <button type="button" id="diff" onclick="difficulty()"> Easy/Hard </button></h4>
+<h5 id='h5'>Easy Mode On</h5>
+<div id="tables">
+<br><table>
+	<caption>Easy Mode</caption>
+	<tr>
+		<td id="RankE">Rank</td>
+		<td id="NameE">Name</td>
+		<td id="ScoreE">Score</td>
+	</tr>
+	<tr>
+		<td id="1stE">1st</td>
+		<td id="1en"></td>
+		<td id="1ep"></td>
+	</tr>
+	<tr>
+		<td id="2ndE">2nd</td>
+		<td id="2en"></td>
+		<td id="2ep"></td>
+	</tr>
+	<tr>
+		<td id="3rdE">3rd</td>
+		<td id="3en"></td>
+		<td id="3ep"></td>
+	</tr>
+	<tr>
+		<td id="4thE">4th</td>
+		<td id="4en"></td>
+		<td id="4ep"></td>
+	</tr>
+	<tr>
+		<td id="5thE">5th</td>
+		<td id="5en"></td>
+		<td id="5ep"></td>
+	</tr>
+</table>
+<div id="spacer"></div>
+<br><table>
+	<caption>Hard Mode</caption>
+	<tr>
+		<td id="RankH">Rank</td>
+		<td id="NameH">Name</td>
+		<td id="ScoreH">Score</td>
+	</tr>
+	<tr>
+		<td id="1stH">1st</td>
+		<td id="1hn"></td>
+		<td id="1hp"></td>
+	</tr>
+	<tr>
+		<td id="2ndH">2nd</td>
+		<td id="2hn"></td>
+		<td id="2hp"></td>
+	</tr>
+	<tr>
+		<td id="3rdH">3rd</td>
+		<td id="3hn"></td>
+		<td id="3hp"></td>
+	</tr>
+	<tr>
+		<td id="4thH">4th</td>
+		<td id="4hn"></td>
+		<td id="4hp"></td>
+	</tr>
+	<tr>
+		<td id="5thH">5th</td>
+		<td id="5hn"></td>
+		<td id="5hp"></td>
+	</tr>
+</table>
+</div>
+    </main>
+    <script>
+
+var ask = "Unknown Player"
+var numbers = [];
+var guesses = [];
+var score = 0;
+var dif = 10;
+var rankPoE = [0,0,0,0,0];
+var rankPlE = ["a","b","c","d","e"];
+var rankPoH = [0,0,0,0,0];
+var rankPlH = ["f","g","h","i","j"];
+
+
+function cellInsert(cellid,data){
+var cell = document.getElementById(cellid);
+cell.insertAdjacentHTML("afterbegin", data);	
+}
+
+function tableRankArrays(){
+//empty cells
+var tcells = document.querySelectorAll('td');
+tcells.forEach(function(a){
+a.innerHTML = "";});
+//fill heading cells
+var cellrank = document.getElementById('RankE');
+cellrank.innerHTML= "Rank";
+var cellname = document.getElementById('NameE');
+cellname.innerHTML= "Name";
+var cellscore = document.getElementById('ScoreE');
+cellscore.innerHTML = "Score";
+var cell1stE = document.getElementById('1stE');
+cell1stE.innerHTML = "1st";
+var cell2ndE = document.getElementById('2ndE');
+cell2ndE.innerHTML = "2nd";
+var cell3rdE = document.getElementById('3rdE');
+cell3rdE.innerHTML = "3rd";
+var cell4thE = document.getElementById('4thE');
+cell4thE.innerHTML = "4th";
+var cell5thE = document.getElementById('5thE');
+cell5thE.innerHTML = "5th";
+var cellrank = document.getElementById('RankH');
+cellrank.innerHTML= "Rank";
+var cellname = document.getElementById('NameH');
+cellname.innerHTML= "Name";
+var cellscore = document.getElementById('ScoreH');
+cellscore.innerHTML = "Score";
+var cell1stH = document.getElementById('1stH');
+cell1stH.innerHTML = "1st";
+var cell2ndH = document.getElementById('2ndH');
+cell2ndH.innerHTML = "2nd";
+var cell3rdH = document.getElementById('3rdH');
+cell3rdH.innerHTML = "3rd";
+var cell4thH = document.getElementById('4thH');
+cell4thH.innerHTML = "4th";
+var cell5thH = document.getElementById('5thH');
+cell5thH.innerHTML = "5th";
+for(i=0; i<5; i++){
+		var cellPoE = (i+1) + "ep";
+		cellInsert(cellPoE, rankPoE[i]);
+		
+		var cellPoH = (i+1) + "hp";
+		cellInsert(cellPoH, rankPoH[i]);
+	
+		var cellPlE = (i+1) + "en";
+		cellInsert(cellPlE, rankPlE[i]);
+	
+		var cellPlH = (i+1) + "hn";
+		cellInsert(cellPlH, rankPlH[i]);
+	}
+}
+
+function saveRankArrays(){
+	var eplr = JSON.stringify(rankPlE[0]) + "," + JSON.stringify(rankPlE[1]) + "," + JSON.stringify(rankPlE[2]) + "," + JSON.stringify(rankPlE[3]) + "," + JSON.stringify(rankPlE[4]);
+	localStorage.setItem("Easyplayerrank", eplr);
+	var epor = JSON.stringify(rankPoE[0]) + "," + JSON.stringify(rankPoE[1]) + "," + JSON.stringify(rankPoE[2]) + "," + JSON.stringify(rankPoE[3]) + "," + JSON.stringify(rankPoE[4]);
+	localStorage.setItem("Easypointsrank", epor);
+	var hplr = JSON.stringify(rankPlH[0]) + "," + JSON.stringify(rankPlH[1]) + "," + JSON.stringify(rankPlH[2]) + "," + JSON.stringify(rankPlH[3]) + "," + JSON.stringify(rankPlH[4]);
+	localStorage.setItem("Hardplayerrank", hplr);
+	var hpor = JSON.stringify(rankPoH[0]) + "," + JSON.stringify(rankPoH[1]) + "," + JSON.stringify(rankPoH[2]) + "," + JSON.stringify(rankPoH[3]) + "," + JSON.stringify(rankPoH[4]);
+	localStorage.setItem("Hardpointsrank", hpor);
+}
+
+function loadRankArrays(){
+	rankPlE= localStorage.getItem("Easyplayerrank").split(",");
+	rankPoE= localStorage.getItem("Easypointsrank").split(",");
+	rankPlH= localStorage.getItem("Hardplayerrank").split(",");
+	rankPoH= localStorage.getItem("Hardpointsrank").split(",");
+
+}
+
+function saveRankToArrays(){
+var temp=0;
+if (dif==10){
+	for (i=0;i<rankPoE.length-1;i++){	
+		if (score>(+rankPoE[i]) && temp==0 && score !== (+rankPoE[i-1])){
+			temp=1;
+			rankPoE.splice(i,0,score);
+			rankPoE.pop();
+			rankPlE.splice(i,0,ask);
+			return rankPlE.pop();
+		}
+	}
+} else {
+	for (i=0;i<rankPoH.length-1;i++){
+		if (score>(+rankPoH[i]) && temp==0 && score !== (+rankPoH[i-1])){
+			temp=1;
+			rankPoH.splice(i,0,score);
+			rankPoH.pop();
+			rankPlH.splice(i,0,ask);
+			return rankPlH.pop();
+		}
+	}
+}
+}
+
+function difficulty()
+{
+
+	if (dif == 10){
+		document.getElementById('h5').innerHTML = "--Hard mode selected";
+		return dif = 100; 
+	} else {
+		document.getElementById('h5').innerHTML = "--Easy mode selected";
+		return dif = 10;
+	}
+}
+
+function game() 
+{
+	score = 0;
+	numbers = [];
+	guesses = [];	
+	alert("The first number is...");
+	function game1()
+	{
+		if (numbers[numbers.length-1] == guesses[guesses.length-1] && guesses.length == numbers.length) 
+		{
+			numbers.push( Math.floor ( Math.random() * dif ));
+			for(let i=0 ; i < numbers.length ; i++)
+			{
+				alert("->" + numbers[i]);
+			}
+
+			var guess = prompt("Enter the numbers separated by a space (eg.: 4 2 7...)");
+			
+			(guess !== null && guess !== "") ? guesses = guess.split(" ") : guesses.push("Nada...");
+
+			if (numbers[numbers.length-1] == guesses[guesses.length-1] && guesses.length == numbers.length) 
+			{		
+				alert("Right answer! Again.");
+				score++;
+				game1();
+
+			} else if (dif == 10 && score > rankPoE[4] || dif == 100 && score > rankPoH[4]) 
+			{
+			
+				alert("Wrong! The right answer was: " + numbers + "\n" + "You have entered: " + guesses);
+				alert("New Record!");
+				saveRankToArrays();
+				saveRankArrays();
+				tableRankArrays();
+			} else 
+			{
+
+				alert("Wrong! The right answer was: " + numbers + "\n" + "You have entered: " + guesses);
+				alert("Game over!");
+	
+
+				var newgame = prompt(" New player? ( p ) \n New Game? ( g ) \n Exit Game? ( x )");			
+				if (newgame == "p" || newgame == "P")
+				{
+					return doorman();
+					} else if (newgame == "g" || newgame == "G") 
+					{
+					
+						game();	
+				
+					} else 
+					{
+
+					} 
+				}
+  			}
+		}
+	game1(); 
+	}
+
+function doorman() 
+{
+	ask = prompt("Who`s there?");
+	alert ("Hello " + ask + "!");
+	return game();
+}
+loadRankArrays();
+tableRankArrays();
+
+
+</script>
+  </body>
+</html> 
