@@ -203,17 +203,8 @@ function saveRankArrays(){
 }
 
 function loadRankArrays(){
-    console.log(rankPlE);
 	rankPlE= JSON.parse(localStorage.getItem('Easyplayerrank'));
-    console.log(rankPlE);
-   
-    console.log(rankPlE);
-
-    console.log(localStorage.getItem("Easypointsrank"));
 	rankPoE= JSON.parse(localStorage.getItem("Easypointsrank"));
-    console.log(rankPoE);
-
-    console.log(localStorage.getItem("Hardplayerrank"))
 	rankPlH= JSON.parse(localStorage.getItem("Hardplayerrank"));
 	rankPoH= JSON.parse(localStorage.getItem("Hardpointsrank"));
 }
@@ -237,7 +228,6 @@ if (dif==10){
 			rankPoE.splice(i,0,score);
 			rankPoE.pop();
 			rankPlE.splice(i,0,ask);
-            console.log("saved easy rank"+ i);
 			return rankPlE.pop();
 		}
 	}
@@ -248,7 +238,6 @@ if (dif==10){
 			rankPoH.splice(i,0,score);
 			rankPoH.pop();
 			rankPlH.splice(i,0,ask);
-            console.log("saved hard rank"+ i);
 			return rankPlH.pop();
 		}
 	}
