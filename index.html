@@ -129,9 +129,9 @@ var guesses = [];
 var score = 0;
 var dif = 10;
 var rankPoE = [0,0,0,0,0];
-var rankPlE = ['--','--','--','--','--'];
+var rankPlE = ["r","a","n","k","m"];
 var rankPoH = [0,0,0,0,0];
-var rankPlH = ['--','--','--','--','--'];
+var rankPlH = ["e","m","o","r","y"];
 
 function cellInsert(cellid,data){
 var cell = document.getElementById(cellid);
@@ -145,9 +145,9 @@ tcells.forEach(function(a){
 a.innerHTML = "";});
 //fill heading cells
 var cellrank = document.getElementById('RankE');
-cellrank.innerHTML= "Rank";
+cellrank.innerHTML = "Rank";
 var cellname = document.getElementById('NameE');
-cellname.innerHTML= "Name";
+cellname.innerHTML = "Name";
 var cellscore = document.getElementById('ScoreE');
 cellscore.innerHTML = "Score";
 var cell1stE = document.getElementById('1stE');
@@ -192,30 +192,40 @@ for(i=0; i<5; i++){
 }
 
 function saveRankArrays(){
-	var eplr = JSON.stringify(rankPlE[0]) + "," + JSON.stringify(rankPlE[1]) + "," + JSON.stringify(rankPlE[2]) + "," + JSON.stringify(rankPlE[3]) + "," + JSON.stringify(rankPlE[4]);
+	var eplr = JSON.stringify(rankPlE);
 	localStorage.setItem("Easyplayerrank", eplr);
-	var epor = JSON.stringify(rankPoE[0]) + "," + JSON.stringify(rankPoE[1]) + "," + JSON.stringify(rankPoE[2]) + "," + JSON.stringify(rankPoE[3]) + "," + JSON.stringify(rankPoE[4]);
+	var epor = JSON.stringify(rankPoE);
 	localStorage.setItem("Easypointsrank", epor);
-	var hplr = JSON.stringify(rankPlH[0]) + "," + JSON.stringify(rankPlH[1]) + "," + JSON.stringify(rankPlH[2]) + "," + JSON.stringify(rankPlH[3]) + "," + JSON.stringify(rankPlH[4]);
+	var hplr = JSON.stringify(rankPlH);
 	localStorage.setItem("Hardplayerrank", hplr);
-	var hpor = JSON.stringify(rankPoH[0]) + "," + JSON.stringify(rankPoH[1]) + "," + JSON.stringify(rankPoH[2]) + "," + JSON.stringify(rankPoH[3]) + "," + JSON.stringify(rankPoH[4]);
+	var hpor = JSON.stringify(rankPoH);
 	localStorage.setItem("Hardpointsrank", hpor);
 }
 
 function loadRankArrays(){
-	rankPlE= localStorage.getItem("Easyplayerrank").split(",");
-	rankPoE= localStorage.getItem("Easypointsrank").split(",");
-	rankPlH= localStorage.getItem("Hardplayerrank").split(",");
-	rankPoH= localStorage.getItem("Hardpointsrank").split(",");
+    console.log(rankPlE);
+	rankPlE= JSON.parse(localStorage.getItem('Easyplayerrank'));
+    console.log(rankPlE);
+   
+    console.log(rankPlE);
 
+    console.log(localStorage.getItem("Easypointsrank"));
+	rankPoE= JSON.parse(localStorage.getItem("Easypointsrank"));
+    console.log(rankPoE);
+
+    console.log(localStorage.getItem("Hardplayerrank"))
+	rankPlH= JSON.parse(localStorage.getItem("Hardplayerrank"));
+	rankPoH= JSON.parse(localStorage.getItem("Hardpointsrank"));
 }
 function testFirstAccess(){
-	    var rankTest= localStorage.getItem("Easypointrank");
+	    var rankTest= localStorage.getItem("Easyplayerrank");
 		
 		if (rankTest === null){
 			alert("Welcome!");
 		saveRankArrays()
-		}
+		} else { 
+            alert("Welcome back!")
+        }
 	    }
 	    
 function saveRankToArrays(){
@@ -227,6 +237,7 @@ if (dif==10){
 			rankPoE.splice(i,0,score);
 			rankPoE.pop();
 			rankPlE.splice(i,0,ask);
+            console.log("saved easy rank"+ i);
 			return rankPlE.pop();
 		}
 	}
@@ -237,6 +248,7 @@ if (dif==10){
 			rankPoH.splice(i,0,score);
 			rankPoH.pop();
 			rankPlH.splice(i,0,ask);
+            console.log("saved hard rank"+ i);
 			return rankPlH.pop();
 		}
 	}
@@ -273,7 +285,7 @@ function game()
 
 			var guess = prompt("Enter the numbers separated by a space (eg.: 4 2 7...)");
 			
-			(guess !== null && guess !== "") ? guesses = guess.split(" ") : guesses.push("Nada...");
+			(guess !== null && guess !== "") ? guesses = guess.split(" ") : guesses.push(" Nada...");
 
 			if (numbers[numbers.length-1] == guesses[guesses.length-1] && guesses.length == numbers.length) 
 			{		
