@@ -2,7 +2,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBmeQ4jqhpTHKNZ5oVsCzoSBHodOtQox30",
   authDomain: "memoryrank.firebaseapp.com",
   databaseURL:
-    "https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app",
+    "https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app/database",
   projectId: "memoryrank",
   storageBucket: "memoryrank.appspot.com",
   messagingSenderId: "325839389976",
