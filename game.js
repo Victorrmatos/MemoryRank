@@ -7,7 +7,8 @@ var rankPoE = [0, 0, 0, 0, 0];
 var rankPlE = ["r", "a", "n", "k", "m"];
 var rankPoH = [0, 0, 0, 0, 0];
 var rankPlH = ["e", "m", "o", "r", "y"];
-
+import { initializeApp } from 'firebase/app';
+const app = initializeApp(firebaseConfig);
 const database = firebase.database();
 const firebaseConfig = {
   apiKey: "AIzaSyBmeQ4jqhpTHKNZ5oVsCzoSBHodOtQox30",
