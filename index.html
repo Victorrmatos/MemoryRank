@@ -123,53 +123,7 @@
      </main>
       <script type="module">
 
-
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
-
-
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-analytics.js";
-
-
-  const firebaseConfig = {
-
-
-    apiKey: "AIzaSyBmeQ4jqhpTHKNZ5oVsCzoSBHodOtQox30",
-
-
-    authDomain: "memoryrank.firebaseapp.com",
-
-
-    databaseURL: "https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app",
-
-
-    projectId: "memoryrank",
-
-
-    storageBucket: "memoryrank.appspot.com",
-
-
-    messagingSenderId: "325839389976",
-
-
-    appId: "1:325839389976:web:d175421e85563e41320a6d",
-
-
-    measurementId: "G-V1V5QKBD7G"
-
-
-  };
-
-  const app = initializeApp(firebaseConfig);
-
-
-  const analytics = getAnalytics(app);
-
-
-</script>
-
-     <script> 
-  
- var ask = "Unknown Player" 
+var ask = "Unknown Player" 
  var numbers = []; 
  var guesses = []; 
  var score = 0; 
@@ -179,6 +133,21 @@
  var rankPoH = [0,0,0,0,0]; 
  var rankPlH = ["e","m","o","r","y"]; 
  var database = firebase.database();
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-analytics.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyBmeQ4jqhpTHKNZ5oVsCzoSBHodOtQox30",
+    authDomain: "memoryrank.firebaseapp.com",
+    databaseURL: "https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "memoryrank",
+    storageBucket: "memoryrank.appspot.com",
+    messagingSenderId: "325839389976",
+    appId: "1:325839389976:web:d175421e85563e41320a6d",
+    measurementId: "G-V1V5QKBD7G"
+  };
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 
  function cellInsert(cellid,data){ 
  var cell = document.getElementById(cellid); 
@@ -255,10 +224,10 @@ ref.set(data);
 // Get the four strings
 firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app/memoryrank').once('value').then((snapshot) => {
   const data = snapshot.val();
-  const rankPlE = data.Easyplayerrank;
-  const rankPoE = data.Easypointsrank;
-  const rankPlH = data.Hardplayerrank;
-  const rankPoH = data.Hardpointsrank;
+  rankPlE = data.Easyplayerrank;
+  rankPoE = data.Easypointsrank;
+  rankPlH = data.Hardplayerrank;
+  rankPoH = data.Hardpointsrank;
  
 });
     
@@ -271,12 +240,12 @@ firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebaseda
                   
                  if (rankTest === null){ 
                          alert("Welcome!"); 
-                 saveRankArrays() 
+                 saveRankArrays(); 
                  } else {  
-             alert("Welcome back!") 
+             alert("Welcome back!");
          } 
-             } 
-              
+             }); 
+        }
  function saveRankToArrays(){ 
  var temp=0; 
  if (dif==10){ 
