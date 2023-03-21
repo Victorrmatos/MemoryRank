@@ -8,8 +8,6 @@ var rankPlE = ["r", "a", "n", "k", "m"];
 var rankPoH = [0, 0, 0, 0, 0];
 var rankPlH = ["e", "m", "o", "r", "y"];
 import { initializeApp } from 'firebase/app';
-const app = initializeApp(firebaseConfig);
-const database = firebase.database();
 const firebaseConfig = {
   apiKey: "AIzaSyBmeQ4jqhpTHKNZ5oVsCzoSBHodOtQox30",
   authDomain: "memoryrank.firebaseapp.com",
@@ -21,8 +19,13 @@ const firebaseConfig = {
   appId: "1:325839389976:web:d175421e85563e41320a6d",
   measurementId: "G-V1V5QKBD7G",
 };
+
+const database = firebase.database();
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const db = getFirestore(app);
+
+
 
 function cellInsert(cellid, data) {
   var cell = document.getElementById(cellid);
