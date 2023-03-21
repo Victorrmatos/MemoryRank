@@ -255,10 +255,10 @@ ref.set(data);
 // Get the four strings
 firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app/memoryrank').once('value').then((snapshot) => {
   const data = snapshot.val();
-  rankPlE = JSON.parse(data.Easyplayerrank);
-  rankPoE = JSON.parse(data.Easypointsrank);
-  rankPlH = JSON.parse(data.Hardplayerrank);
-  rankPoH = JSON.parse(data.Hardpointsrank);
+  const rankPlE = JSON.parse(data.Easyplayerrank);
+  const rankPoE = JSON.parse(data.Easypointsrank);
+  const rankPlH = JSON.parse(data.Hardplayerrank);
+  const rankPoH = JSON.parse(data.Hardpointsrank);
   console.log(rankPlE + rankPoE)
 });
     
