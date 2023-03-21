@@ -255,16 +255,19 @@ ref.set(data);
 // Get the four strings
 firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app/memoryrank').once('value').then((snapshot) => {
   const data = snapshot.val();
-  const rankPlE = data.Easyplayerrank;
-  const rankPoE = data.Easypointsrank;
-  const rankPlH = data.Hardplayerrank;
-  const rankPoH = data.Hardpointsrank;
+  rankPlE = data.Easyplayerrank;
+  rankPoE = data.Easypointsrank;
+  rankPlH = data.Hardplayerrank;
+  rankPoH = data.Hardpointsrank;
  
 });
     
  } 
  function testFirstAccess(){ 
-             var rankTest= localStorage.getItem("Easyplayerrank"); 
+
+firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app/memoryrank').once('value').then((snapshot) => {
+  const data = snapshot.val();
+  rankPoE = data.Easyplayerrank;             var rankTest= rankPoE; 
                   
                  if (rankTest === null){ 
                          alert("Welcome!"); 
