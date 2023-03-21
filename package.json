@@ -1,0 +1,12 @@
+{
+  "name": "memoryrank",
+  "version": "0.1.0",
+  "description": "Memory Rank is a web-based game that tests your memory skills. In each round, a new number is displayed,  and you are asked to input the whole sequence from memory. The game has two modes: Easy and Hard.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": []
+}
