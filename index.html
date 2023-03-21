@@ -208,6 +208,7 @@ var ask = "Unknown Player"
  } 
   
  function saveRankArrays(){ 
+
  var database = firebase.database();
 var ref = database.ref('https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app/memoryrank');
 var data = {
@@ -228,7 +229,6 @@ firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebaseda
   rankPoE = data.Easypointsrank;
   rankPlH = data.Hardplayerrank;
   rankPoH = data.Hardpointsrank;
- 
 });
     
  } 
@@ -236,7 +236,8 @@ firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebaseda
 
 firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app/memoryrank').once('value').then((snapshot) => {
   const data = snapshot.val();
-  rankPoE = data.Easyplayerrank;             var rankTest= rankPoE; 
+  rankPoE = data.Easyplayerrank;             
+  var rankTest = rankPoE; 
                   
                  if (rankTest === null){ 
                          alert("Welcome!"); 
@@ -247,8 +248,8 @@ firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebaseda
              }); 
         }
  function saveRankToArrays(){ 
- var temp=0; 
- if (dif==10){ 
+ var temp = 0; 
+ if (dif == 10){ 
          for (i=0;i<rankPoE.length-1;i++){         
                  if (score>(+rankPoE[i]) && temp==0 && score !== (+rankPoE[i-1])){ 
                          temp=1; 
