@@ -87,7 +87,7 @@ function tableRankArrays() {
 }
 
 function saveRankArrays() {
-  var ref = database.ref(memoryrank / ranking);
+  var ref = database.ref("memoryrank");
   var data = {
     Easyplayerrank: rankPlE,
     Easypointsrank: rankPoE,
@@ -98,6 +98,7 @@ function saveRankArrays() {
 }
 
 function loadRankArrays() {
+
   // Get the four strings
   firebase
     .database()
