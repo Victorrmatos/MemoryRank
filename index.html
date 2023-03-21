@@ -132,7 +132,7 @@ var ask = "Unknown Player"
  var rankPlE = ["r","a","n","k","m"]; 
  var rankPoH = [0,0,0,0,0]; 
  var rankPlH = ["e","m","o","r","y"]; 
- var database = firebase.database();
+ 
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-analytics.js";
@@ -148,7 +148,7 @@ var ask = "Unknown Player"
   };
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-
+  var database = firebase.database();
  function cellInsert(cellid,data){ 
  var cell = document.getElementById(cellid); 
  cell.insertAdjacentHTML("afterbegin", data);         
