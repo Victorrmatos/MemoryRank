@@ -112,5 +112,24 @@
         </table>
       </div>
     </main>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-analytics.js";
+      import { database } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
+      const database = firebase.database();
+      const firebaseConfig = {
+        apiKey: "AIzaSyBmeQ4jqhpTHKNZ5oVsCzoSBHodOtQox30",
+        authDomain: "memoryrank.firebaseapp.com",
+        databaseURL:
+          "https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "memoryrank",
+        storageBucket: "memoryrank.appspot.com",
+        messagingSenderId: "325839389976",
+        appId: "1:325839389976:web:d175421e85563e41320a6d",
+        measurementId: "G-V1V5QKBD7G",
+      };
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </body>
 </html>

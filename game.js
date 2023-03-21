@@ -8,9 +8,6 @@ var rankPlE = ["r", "a", "n", "k", "m"];
 var rankPoH = [0, 0, 0, 0, 0];
 var rankPlH = ["e", "m", "o", "r", "y"];
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-analytics.js";
-import { database } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
 const database = firebase.database();
 const firebaseConfig = {
   apiKey: "AIzaSyBmeQ4jqhpTHKNZ5oVsCzoSBHodOtQox30",
