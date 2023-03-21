@@ -1,4 +1,7 @@
-
+body {
+    background-color: lightblue;
+}
+ 
  main { 
  display: flex; 
      flex-direction: column; 
