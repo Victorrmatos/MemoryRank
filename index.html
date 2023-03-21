@@ -242,10 +242,10 @@
  var database = firebase.database();
 var ref = database.ref('https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app/memoryrank');
 var data = {
-  Easyplayerrank: JSON.stringify(rankPlE), 
-  Easypointsrank: JSON.stringify(rankPoE),
-  Hardplayerrank: JSON.stringify(rankPlH),
-  Hardpointsrank: JSON.stringify(rankPoH)
+  Easyplayerrank: rankPlE, 
+  Easypointsrank: rankPoE,
+  Hardplayerrank: rankPlH,
+  Hardpointsrank: rankPoH
 };
 ref.set(data);
  
@@ -255,11 +255,11 @@ ref.set(data);
 // Get the four strings
 firebase.database().ref('https://memoryrank-default-rtdb.europe-west1.firebasedatabase.app/memoryrank').once('value').then((snapshot) => {
   const data = snapshot.val();
-  const rankPlE = JSON.parse(data.Easyplayerrank);
-  const rankPoE = JSON.parse(data.Easypointsrank);
-  const rankPlH = JSON.parse(data.Hardplayerrank);
-  const rankPoH = JSON.parse(data.Hardpointsrank);
-  console.log(rankPlE + rankPoE)
+  const rankPlE = data.Easyplayerrank;
+  const rankPoE = data.Easypointsrank;
+  const rankPlH = data.Hardplayerrank;
+  const rankPoH = data.Hardpointsrank;
+ 
 });
     
  } 
