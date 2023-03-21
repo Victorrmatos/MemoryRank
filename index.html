@@ -1,112 +1,116 @@
-<!DOCTYPE html> 
- <html lang="en"> 
-   <head> 
-     <meta charset="UTF-8"> 
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-     <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
-     <link rel="stylesheet" href="styles.css">
-  <!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="game.js"></script>
 
-<!-- Add Firebase services that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
- <!-- Firebase SDKs -->
- <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
- <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
- 
- <!-- Firebase configuration -->
- <script src="firebase-config.js"></script>
-
- <!-- Game JavaScript code -->
- <script src="game.js"></script>
- 
-     <title> Memory Rank </title> 
-  
-  
-   </head> 
-   <body> 
-     <main> 
-       <h1><br>M e m o r y . R a n k</h1> 
- <br> 
- <h3><b>A new number is given every round, then you are asked to input the whole sequence.</b></h3> 
- <br> 
- <button type="button" id="start" onclick="doorman()"> <b>-   Start Game   -</b> </button> 
- <br> 
- <br> 
- <h4>Change difficulty: <button type="button" id="diff" onclick="difficulty()"> Easy/Hard </button></h4> 
- <h5 id='h5'>Easy Mode On</h5> 
- <div id="tables"> 
- <br><table> 
-         <caption>Easy Mode</caption> 
-         <tr> 
-                 <td id="RankE">Rank</td> 
-                 <td id="NameE">Name</td> 
-                 <td id="ScoreE">Score</td> 
-         </tr> 
-         <tr> 
-                 <td id="1stE">1st</td> 
-                 <td id="1en"></td> 
-                 <td id="1ep"></td> 
-         </tr> 
-         <tr> 
-                 <td id="2ndE">2nd</td> 
-                 <td id="2en"></td> 
-                 <td id="2ep"></td> 
-         </tr> 
-         <tr> 
-                 <td id="3rdE">3rd</td> 
-                 <td id="3en"></td> 
-                 <td id="3ep"></td> 
-         </tr> 
-         <tr> 
-                 <td id="4thE">4th</td> 
-                 <td id="4en"></td> 
-                 <td id="4ep"></td> 
-         </tr> 
-         <tr> 
-                 <td id="5thE">5th</td> 
-                 <td id="5en"></td> 
-                 <td id="5ep"></td> 
-         </tr> 
- </table> 
- <div id="spacer"></div> 
- <br><table> 
-         <caption>Hard Mode</caption> 
-         <tr> 
-                 <td id="RankH">Rank</td> 
-                 <td id="NameH">Name</td> 
-                 <td id="ScoreH">Score</td> 
-         </tr> 
-         <tr> 
-                 <td id="1stH">1st</td> 
-                 <td id="1hn"></td> 
-                 <td id="1hp"></td> 
-         </tr> 
-         <tr> 
-                 <td id="2ndH">2nd</td> 
-                 <td id="2hn"></td> 
-                 <td id="2hp"></td> 
-         </tr> 
-         <tr> 
-                 <td id="3rdH">3rd</td> 
-                 <td id="3hn"></td> 
-                 <td id="3hp"></td> 
-         </tr> 
-         <tr> 
-                 <td id="4thH">4th</td> 
-                 <td id="4hn"></td> 
-                 <td id="4hp"></td> 
-         </tr> 
-         <tr> 
-                 <td id="5thH">5th</td> 
-                 <td id="5hn"></td> 
-                 <td id="5hp"></td> 
-         </tr> 
- </table> 
- </div> 
-     </main>
-
-   </body> 
- </html> 
+    <title>Memory Rank</title>
+  </head>
+  <body>
+    <main>
+      <h1><br />M e m o r y . R a n k</h1>
+      <br />
+      <h3>
+        <b
+          >A new number is given every round, then you are asked to input the
+          whole sequence.</b
+        >
+      </h3>
+      <br />
+      <button type="button" id="start" onclick="doorman()">
+        <b>- Start Game -</b>
+      </button>
+      <br />
+      <br />
+      <h4>
+        Change difficulty:
+        <button type="button" id="diff" onclick="difficulty()">
+          Easy/Hard
+        </button>
+      </h4>
+      <h5 id="h5">Easy Mode On</h5>
+      <div id="tables">
+        <br />
+        <table>
+          <caption>
+            Easy Mode
+          </caption>
+          <tr>
+            <td id="RankE">Rank</td>
+            <td id="NameE">Name</td>
+            <td id="ScoreE">Score</td>
+          </tr>
+          <tr>
+            <td id="1stE">1st</td>
+            <td id="1en"></td>
+            <td id="1ep"></td>
+          </tr>
+          <tr>
+            <td id="2ndE">2nd</td>
+            <td id="2en"></td>
+            <td id="2ep"></td>
+          </tr>
+          <tr>
+            <td id="3rdE">3rd</td>
+            <td id="3en"></td>
+            <td id="3ep"></td>
+          </tr>
+          <tr>
+            <td id="4thE">4th</td>
+            <td id="4en"></td>
+            <td id="4ep"></td>
+          </tr>
+          <tr>
+            <td id="5thE">5th</td>
+            <td id="5en"></td>
+            <td id="5ep"></td>
+          </tr>
+        </table>
+        <div id="spacer"></div>
+        <br />
+        <table>
+          <caption>
+            Hard Mode
+          </caption>
+          <tr>
+            <td id="RankH">Rank</td>
+            <td id="NameH">Name</td>
+            <td id="ScoreH">Score</td>
+          </tr>
+          <tr>
+            <td id="1stH">1st</td>
+            <td id="1hn"></td>
+            <td id="1hp"></td>
+          </tr>
+          <tr>
+            <td id="2ndH">2nd</td>
+            <td id="2hn"></td>
+            <td id="2hp"></td>
+          </tr>
+          <tr>
+            <td id="3rdH">3rd</td>
+            <td id="3hn"></td>
+            <td id="3hp"></td>
+          </tr>
+          <tr>
+            <td id="4thH">4th</td>
+            <td id="4hn"></td>
+            <td id="4hp"></td>
+          </tr>
+          <tr>
+            <td id="5thH">5th</td>
+            <td id="5hn"></td>
+            <td id="5hp"></td>
+          </tr>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

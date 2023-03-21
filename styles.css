@@ -1,34 +1,40 @@
 body {
     background-color: lightblue;
 }
- 
- main { 
- display: flex; 
-     flex-direction: column; 
-     flex-wrap: nowrap; 
-     align-content: center; 
-     justify-content: center; 
-     align-items: center; 
- } 
- #start { 
- padding:20px; 
- font-size:25px; 
- justify-content:center; 
- } 
- table, tr, td{ 
- border: 1px solid; 
- border-collapse: collapse; 
- text-align: center; 
-  
- } 
- table{ 
- margin:10px; 
- } 
- td{ 
- padding:5px; 
- } 
- #tables{ 
- display:flex; 
- flex-direction: row; 
- } 
- 
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#start {
+    padding: 20px;
+    font-size: 25px;
+    justify-content: center;
+}
+
+table,
+tr,
+td {
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: center;
+
+}
+
+table {
+    margin: 10px;
+}
+
+td {
+    padding: 5px;
+}
+
+#tables {
+    display: flex;
+    flex-direction: row;
+}
