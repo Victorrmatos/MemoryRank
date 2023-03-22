@@ -87,7 +87,7 @@ function tableRankArrays() {
 }
 
 function saveRankArrays() {
-  var ref = database.ref("memoryrank");
+  var ref = database().ref();
   var data = {
     Easyplayerrank: rankPlE,
     Easypointsrank: rankPoE,
