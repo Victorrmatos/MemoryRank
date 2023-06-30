@@ -126,7 +126,7 @@ function testFirstAccess() {
       rankPoE = data.Easyplayerrank;
       var rankTest = rankPoE;
 
-      if (rankTest === null) {
+      if (rankTest === "") {
         alert("Welcome!");
         saveRankArrays();
       } else {
